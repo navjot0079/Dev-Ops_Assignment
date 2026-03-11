@@ -5,6 +5,6 @@
     "installCommand": "npm install",
     "framework": "vite",
     "env": {
-        "VITE_API_URL": "https://your-backend-url.onrender.com/api"
+        "VITE_API_URL": "https://dev-ops-assignment.onrender.com/api"
     }
 }
