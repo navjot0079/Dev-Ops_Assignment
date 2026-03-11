@@ -77,7 +77,12 @@ app.use(cors({
         // Allow requests with no origin (like mobile apps or curl)
         if (!origin) return callback(null, true);
 
-        if (allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV === 'development') {
+        // In production, allow if origin is in allowedOrigins OR ends with .vercel.app or .netlify.app
+        if (allowedOrigins.indexOf(origin) !== -1 ||
+            process.env.NODE_ENV === 'development' ||
+            origin.endsWith('.vercel.app') ||
+            origin.endsWith('.netlify.app') ||
+            origin.endsWith('.onrender.com')) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
